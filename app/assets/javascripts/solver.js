@@ -2,6 +2,8 @@ function LaplaceBox(width) {
   this.image = [];
   this.width = width;
   this.maxVal = 1.0;
+  this.xc = width/2;
+  this.yc = width/2;
 
   for(var i = 0; i < width*width; i++) {
     this.image.push(0.5);
@@ -17,7 +19,7 @@ LaplaceBox.prototype.reset = function() {
 };
 
 LaplaceBox.prototype.inDisk = function(i,j) {
-  return Math.sqrt( Math.pow(i-this.width/2,2) + Math.pow(j-this.width/2,2) ) < 40.0;
+  return Math.sqrt( Math.pow(i-this.xc,2) + Math.pow(j-this.yc,2) ) < 40.0;
 };
 
 LaplaceBox.prototype.initBC = function() {

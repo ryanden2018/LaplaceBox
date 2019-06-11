@@ -13,6 +13,7 @@ window.onload = function() {
       for(var j = 0; j < width; j++) {
         var idx0 = (i*width+j)*4;
         var val = Math.max( 255* Math.min( lb.image[(width/3)*Math.floor(i/3)+Math.floor(j/3)]/lb.maxVal ,255), 0);
+        if(lb.inDisk(Math.floor(i/3),Math.floor(j/3))) { val = 0; }
         imgdata.data[idx0] = Math.floor(val);
         imgdata.data[idx0+1] = Math.floor(val);
         imgdata.data[idx0+2] = Math.floor(val);
@@ -20,6 +21,7 @@ window.onload = function() {
       }
     }
   }
+
 
   function main(tf) {
     window.requestAnimationFrame(main);
